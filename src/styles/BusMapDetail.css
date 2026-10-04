@@ -1,0 +1,106 @@
+/* src/styles/BusMapDetail.css
+   Estilos específicos para la vista "Monitoreo de Flota".
+   En PC se mantienen los tamaños originales para no alterar el diseño.
+   En móvil se ajustan alturas y espaciados para que el mapa no ocupe toda la pantalla.
+*/
+
+/* Panel lateral con la lista de buses.
+   En PC la altura se calcula según el viewport disponible. */
+.bus-detail-list {
+  overflow-y: auto;
+  max-height: calc(82vh - 90px);
+  padding: 0.5rem;
+}
+
+/* Contenedor del mapa.
+  se usa "height" explícito (no solo min-height) porque
+   Google Maps necesita saber exactamente cuánto espacio ocupar. */
+.bus-detail-map {
+  height: 75vh;       /* Altura en PC */
+  min-height: 500px;  /* Mínimo para pantallas con poca altura */
+  overflow: hidden;
+}
+
+/* Ajustes que solo se aplican cuando el ancho es menor a 768px.
+   Así el diseño de PC no se ve afectado. */
+@media (max-width: 768px) {
+
+  /* El header se hace más compacto para no ocupar tanta pantalla.
+     Los elementos se apilan en columna y se reduce el espaciado. */
+  .bus-detail-header {
+    padding: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0.5rem;
+  }
+
+  /* Botones del header más pequeños */
+  .bus-detail-header .btn {
+    font-size: 11px;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Título principal en tamaño reducido */
+  .bus-detail-title {
+    font-size: 14px !important;
+    line-height: 1.2;
+  }
+
+  /* El subtítulo se oculta en móvil para ahorrar espacio vertical */
+  .bus-detail-subtitle {
+    font-size: 10px !important;
+    display: none;
+  }
+
+  /* Badges ("en ruta", "reg.") más compactos */
+  .bus-detail-header .badge {
+    font-size: 10px;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  /* La lista de buses se limita a 35vh de alto */
+  .bus-detail-list {
+    max-height: 35vh !important;
+  }
+
+  /* El mapa ocupa 40vh en móvil.
+     Esto deja aproximadamente 60% de espacio libre para que el usuario
+     pueda deslizar con un dedo fuera del mapa y ver los demás componentes. */
+  .bus-detail-map {
+    height: 40vh !important;
+    min-height: 280px !important;
+  }
+
+  /* Se reducen los márgenes entre columnas en móvil */
+  .bus-detail-container .row {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.5rem;
+  }
+
+  /* En móvil, el panel lateral y el mapa se apilan verticalmente
+     ocupando cada uno el 100% del ancho disponible. */
+  .bus-detail-container .col-lg-4,
+  .bus-detail-container .col-md-5,
+  .bus-detail-container .col-lg-8,
+  .bus-detail-container .col-md-7 {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}
+
+/* Ajustes adicionales para móviles muy pequeños (ancho menor a 480px) */
+@media (max-width: 480px) {
+
+  /* La lista se reduce un poco más para no dejar sin espacio al mapa */
+  .bus-detail-list {
+    max-height: 30vh !important;
+  }
+
+  /* En pantallas muy angostas el mapa puede crecer un poco
+     porque el header y la lista ya ocupan menos */
+  .bus-detail-map {
+    height: 45vh !important;
+    min-height: 300px !important;
+  }
+}

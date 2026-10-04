@@ -1,0 +1,105 @@
+/* src/styles/RevenueDashboard.css
+   Estilos específicos para la vista "Balance Financiero".
+   En PC se mantienen los tamaños originales.
+   En móvil se ajustan los headers, KPIs y la gráfica.
+*/
+
+/* Contenedor principal del balance */
+.revenue-container {
+  width: 100%;
+}
+
+/* Header con botón volver y total. En móvil se apila en columna. */
+.revenue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Badge del total. En PC se ve pequeño a la derecha. */
+.revenue-total-badge {
+  white-space: nowrap;
+}
+
+/* Contenedor de la gráfica.
+   Altura explícita para que Chart.js se renderice bien.
+   En PC es más alto, en móvil se reduce. */
+.revenue-chart-wrapper {
+  height: 420px;
+  position: relative;
+  width: 100%;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 768px) {
+
+  /* El header se apila en columna */
+  .revenue-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem;
+  }
+
+  /* El badge del total ocupa todo el ancho */
+  .revenue-total-badge {
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem !important;
+  }
+
+  /* El título se reduce */
+  .revenue-header h5 {
+    font-size: 15px !important;
+  }
+
+  /* El subtítulo se oculta para ahorrar espacio */
+  .revenue-header small {
+    font-size: 11px !important;
+  }
+
+  /* El botón de volver se hace más compacto */
+  .revenue-header .btn {
+    font-size: 11px;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* La gráfica se reduce de 420px a 280px en móvil */
+  .revenue-chart-wrapper {
+    height: 280px !important;
+  }
+
+  /* Botones de Diario/Semanal/Mensual se ven más chicos */
+  .revenue-chart-wrapper ~ .btn-group .btn,
+  .revenue-container .btn-group .btn {
+    font-size: 11px;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Los KPIs (col-md-3) pasan a ocupar 50% en móvil (2 columnas) */
+  .revenue-container .row.g-3 > .col-md-3 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+
+  /* Y en móviles muy pequeños, cada KPI ocupa 100% */
+}
+
+/* Ajustes para móviles muy pequeños */
+@media (max-width: 480px) {
+
+  /* La gráfica aún más pequeña */
+  .revenue-chart-wrapper {
+    height: 240px !important;
+  }
+
+  /* Los KPIs pasan a una sola columna */
+  .revenue-container .row.g-3 > .col-md-3 {
+    width: 100%;
+  }
+
+  /* El texto "Total: $38.000 CLP" se reduce */
+  .revenue-total-badge {
+    font-size: 0.8rem !important;
+  }
+}

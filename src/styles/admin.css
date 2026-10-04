@@ -1,0 +1,275 @@
+/* src/styles/admin.css
+   Estilos generales del panel de administración.
+   Incluye el layout base, la sidebar, el header superior,
+   las tarjetas del dashboard y todo el tema oscuro (.admin-dark).
+*/
+
+/* Layout general del panel */
+.admin-root {
+  min-height: 100vh;
+  background-color: #0f172a;
+  color: #e5e7eb;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  flex: 1;
+}
+
+/* Barra lateral izquierda (actualmente no se usa,
+   pero se mantiene por si se retoma el menú vertical) */
+.sidebar {
+  width: 240px;
+  background-color: #020617;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #38bdf8;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  color: #cbd5f5;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: background 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #1e293b;
+}
+
+/* Header superior y contenedor de vistas */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.admin-topbar {
+  height: 64px;
+  background-color: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.admin-content {
+  flex: 1 0 auto;
+  padding: 24px;
+  padding-bottom: 48px; /* Espacio de holgura para que el último elemento respire */
+}
+
+/* Tarjetas del dashboard y contenedor del mapa */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.kpi-card {
+  background: #18181b;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #27272a;
+}
+
+.map-wrapper {
+  flex: 1;
+  background: #18181b;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Contenedor con scroll para tablas largas */
+.table-scroll-container {
+  max-height: 380px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Encabezado de tabla fijo al hacer scroll */
+.table-sticky-header th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #212529;
+}
+
+/* Footer del panel */
+.admin-footer {
+  margin-top: auto;
+  padding: 16px 24px;
+  background-color: #020617;
+  border-top: 1px solid #1e293b;
+  color: #94a3b8;
+  font-size: 12.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Tema oscuro (.admin-dark)
+   Todas estas reglas solo se activan cuando el body tiene la clase "admin-dark".
+   Se usan !important porque tienen que sobreescribir estilos inline y de Bootstrap. */
+
+body.admin-dark {
+  background-color: #090d16 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Neutraliza los divs con bg-light y bg-white de Bootstrap
+   (por ejemplo, el filtro de horarios) */
+.admin-dark .bg-light,
+.admin-dark .bg-white {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+
+.admin-dark .border {
+  border-color: #27272a !important;
+}
+
+/* Labels y textos sobre filtros: azul suave para que sean legibles */
+.admin-dark label,
+.admin-dark .form-label,
+.admin-dark .bg-light label {
+  color: #93c5fd !important;
+}
+
+/* Tarjetas en modo oscuro */
+.admin-dark .card {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+
+.admin-dark .card-header {
+  border-color: #27272a !important;
+}
+
+.admin-dark .card h4,
+.admin-dark .card h5,
+.admin-dark .card h6 {
+  color: #f8fafc !important;
+}
+
+/* Tablas en modo oscuro */
+.admin-dark .table {
+  --bs-table-bg: #18181b !important;
+  --bs-table-striped-bg: #202024 !important;
+  --bs-table-hover-bg: #27272a !important;
+  color: #f4f4f5 !important;
+  border-color: #27272a !important;
+}
+
+.admin-dark .table td,
+.admin-dark .table th {
+  background-color: transparent !important;
+  color: #f4f4f5 !important;
+  border-color: #27272a !important;
+}
+
+.admin-dark .table-scroll-container {
+  border-color: #27272a !important;
+  background-color: #18181b !important;
+}
+
+.admin-dark .table-sticky-header th {
+  background-color: #27272a !important;
+  color: #f8fafc !important;
+}
+
+/* Inputs y selects en modo oscuro */
+.admin-dark .form-control,
+.admin-dark .form-select {
+  background-color: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #f4f4f5 !important;
+}
+
+.admin-dark .form-control:focus,
+.admin-dark .form-select:focus {
+  background-color: #27272a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+}
+
+.admin-dark .input-group-text {
+  background-color: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #a1a1aa !important;
+}
+
+/* Modales en modo oscuro */
+.admin-dark .modal-content {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+
+.admin-dark .modal-header,
+.admin-dark .modal-footer {
+  background-color: #202024 !important;
+  border-color: #27272a !important;
+}
+
+.admin-dark .modal-title {
+  color: #f8fafc !important;
+}
+
+/* Botones con borde en modo oscuro */
+.admin-dark .btn-outline-primary {
+  color: #60a5fa !important;
+  border-color: #60a5fa !important;
+}
+
+.admin-dark .btn-outline-primary:hover {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.admin-dark .btn-outline-secondary {
+  color: #a1a1aa !important;
+  border-color: #3f3f46 !important;
+}
+
+.admin-dark .btn-outline-secondary:hover {
+  background-color: #27272a !important;
+  color: #ffffff !important;
+}
+
+/* Scrollbar personalizado para el modo oscuro */
+.admin-dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.admin-dark ::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+.admin-dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+
+.admin-dark ::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}

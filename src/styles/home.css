@@ -1,0 +1,562 @@
+/* src/styles/home.css
+   Estilos de la página pública de inicio (landing de Buses Turisur).
+   Incluye la barra de navegación, el hero con buscador,
+   la tarjeta de resultados, las secciones informativas y el footer.
+*/
+
+.home-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+}
+
+/* Barra superior fija de la página pública */
+.home-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+}
+
+.home-navbar img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Enlaces de navegación */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+  font-size: 13.5px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #16a34a;
+}
+
+/* Acceso al panel administrativo */
+.nav-links .login-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.nav-links .login-link:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Hero con imagen de fondo */
+.hero {
+  min-height: 470px;
+  background-size: cover;
+  background-position: center;
+  padding-top: 60px;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.82),
+    rgba(15, 23, 42, 0.42)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px 40px;
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+/* Título y subtítulo del hero */
+.hero-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.hero-header p {
+  margin: 0 0 20px 0;
+  font-size: 14.5px;
+  color: #e2e8f0;
+}
+
+/* Distribución en dos columnas: formulario a la izquierda, resultados a la derecha */
+.search-layout {
+  display: grid;
+  grid-template-columns: minmax(500px, 580px) 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  width: 100%;
+}
+
+.search-left {
+  width: 100%;
+}
+
+.search-right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Formulario de búsqueda.
+   Tiene 5 columnas: origen, destino, jornada, hora y botón.
+   El input type="time" ya incluye el selector AM/PM nativo. */
+.search-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr auto;
+  gap: 10px;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.select-group select {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 13.5px;
+  color: #1e293b;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.select-group select:focus {
+  border-color: #2563eb;
+}
+
+.select-group select:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+  border-color: #e2e8f0;
+}
+
+/* Input de hora dentro del buscador.
+   En móvil, al tocarlo se abre el selector nativo (reloj redondo con AM/PM).
+   Si se deja vacío, la app usa la hora actual del dispositivo como referencia. */
+.select-group .time-input {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 13.5px;
+  color: #1e293b;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.select-group .time-input:focus {
+  border-color: #2563eb;
+}
+
+/* Texto informativo debajo del formulario */
+.search-hint {
+  display: block;
+  margin-top: 8px;
+  color: #cbd5e1;
+  font-size: 11.5px;
+}
+
+.search-btn {
+  background-color: #16a34a;
+  color: #ffffff;
+  border: none;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.search-btn:hover {
+  background-color: #15803d;
+}
+
+/* Tarjeta de resultados (columna derecha del hero) */
+.mini-results {
+  background: #ffffff;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  color: #0f172a;
+  width: 100%;
+  max-width: 440px;
+  border: 1px solid #e2e8f0;
+}
+
+.mini-results .results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 8px;
+}
+
+.mini-results .results-header h6 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.results-count {
+  font-size: 11px;
+  background-color: #f1f5f9;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.results-scroll {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Tarjeta individual de cada horario */
+.schedule-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.schedule-card:hover {
+  border-color: #cbd5e1;
+}
+
+/* ==========================================================
+   TARJETA DESTACADA DEL "PRÓXIMO BUS"
+   Solo se aplica al primer resultado (el más cercano a la hora
+   consultada). Se resalta con borde verde grueso y fondo suave.
+   ========================================================== */
+.schedule-card-next {
+  background: #f0fdf4;
+  border: 2px solid #16a34a;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.15);
+}
+
+.schedule-card-next:hover {
+  border-color: #15803d;
+}
+
+/* Badge con ícono de estrella que indica el próximo bus */
+.next-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.route-title {
+  font-weight: 600;
+  font-size: 12.5px;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.route-icon {
+  color: #2563eb;
+  font-size: 11px;
+}
+
+.price-tag {
+  font-weight: 700;
+  color: #16a34a;
+  font-size: 12.5px;
+}
+
+.card-details {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.item-icon {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+/* Bloque de información extra en cada tarjeta.
+   Muestra el tiempo restante hasta la salida y un placeholder
+   para el tiempo de llegada (que aún no está en la base de datos). */
+.card-extra {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-extra .extra-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #334155;
+}
+
+.card-extra .extra-icon {
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Sección de tarjetas informativas debajo del hero */
+.features-grid {
+  flex: 1;
+  padding: 20px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: stretch;
+}
+
+.feature-item {
+  background: #ffffff;
+  padding: 20px 22px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px auto;
+  flex-shrink: 0;
+}
+
+.feature-item h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.feature-item p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+/* Lista de canales de contacto */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  color: #334155;
+}
+
+.contact-icon {
+  color: #2563eb;
+  font-size: 11px;
+}
+
+/* Footer institucional */
+.corporate-footer {
+  margin-top: auto;
+  flex-shrink: 0;
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 12px 40px;
+  font-size: 12px;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-content {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info .footer-title {
+  display: block;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 2px;
+}
+
+.footer-info p,
+.footer-rights p {
+  margin: 0;
+}
+
+/* Ajustes para tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  .search-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .search-right {
+    justify-content: center;
+  }
+
+  .mini-results {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .hero {
+    height: auto;
+    min-height: auto;
+    padding-bottom: 20px;
+  }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .home-navbar {
+    padding: 0 16px;
+  }
+
+  /* En móvil solo se muestra el enlace de login */
+  .nav-links a:not(.login-link) {
+    display: none;
+  }
+
+  .hero-content {
+    padding: 20px 16px 16px;
+  }
+
+  .hero-header h1 {
+    font-size: 24px;
+  }
+
+  /* En móvil el formulario se apila en una sola columna */
+  .search-box {
+    grid-template-columns: 1fr;
+  }
+
+  .search-btn {
+    padding: 10px;
+  }
+
+  /* El input de hora se ve un poco más grande para que sea fácil de tocar */
+  .select-group .time-input {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}

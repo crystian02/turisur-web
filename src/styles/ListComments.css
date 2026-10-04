@@ -1,0 +1,293 @@
+/* src/styles/ListComments.css
+   Estilos específicos para la vista "Atención a Pasajeros y Consultas".
+   Incluye filtros visuales con íconos, header con botón volver
+   y ajustes responsive para móvil.
+*/
+
+/* Contenedor principal */
+.comments-container {
+  width: 100%;
+}
+
+/* Header con botón volver y badges */
+.comments-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Barra de filtro clásica (usada en modo dashboard embebido) */
+.comments-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Selector de filtro clásico */
+.comments-filter-select {
+  max-width: 280px;
+  width: 100%;
+}
+
+/* ==========================================================
+   FILTROS VISUALES CON ÍCONOS (MÁS GRANDES Y CENTRADOS)
+   Solo se usan en la vista completa (mini = false).
+   Se distribuyen en 5 columnas en PC, y se apilan en móvil.
+   ========================================================== */
+.comments-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.comment-category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-align: center;
+  min-height: 110px;
+}
+
+.comment-category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.comment-category-card.active {
+  border-width: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Ícono grande y centrado dentro de un círculo con fondo de color */
+.category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+/* Label con el nombre de la categoría, centrado */
+.category-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+}
+
+/* Contador grande y visible */
+.category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 11px;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Barra de texto que dice "Mostrando X mensajes" */
+.comments-counter-bar {
+  padding: 0 4px;
+}
+
+/* Lista scrolleable de tarjetas */
+.comments-list {
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Tarjeta individual de comentario */
+.comment-card {
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Cabecera de cada tarjeta: tipo + email + fecha */
+.comment-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Bloque de metadatos a la izquierda (tipo, email, fecha) */
+.comment-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Bloque de acciones a la derecha (badge estado + botón) */
+.comment-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 768px) {
+
+  /* Header apilado en columna */
+  .comments-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem;
+  }
+
+  /* El título se reduce */
+  .comments-header h5 {
+    font-size: 15px !important;
+  }
+
+  /* El subtítulo se oculta */
+  .comments-header small {
+    font-size: 11px !important;
+  }
+
+  /* El botón "Volver" se hace más compacto */
+  .comments-header .btn {
+    font-size: 11px;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Los badges del header se apilan y se reducen */
+  .comments-header .badge {
+    font-size: 10px;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  /* La barra de filtro clásica se apila */
+  .comments-filter-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem;
+  }
+
+  /* El select del filtro ocupa todo el ancho */
+  .comments-filter-select {
+    max-width: 100% !important;
+  }
+
+  /* Filtros visuales en móvil: 2 columnas con íconos medianos */
+  .comments-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .comment-category-card {
+    padding: 12px 8px;
+    min-height: 95px;
+  }
+
+  .category-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .category-label {
+    font-size: 11.5px;
+  }
+
+  .category-count {
+    min-width: 28px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  /* La lista ocupa 50vh en móvil */
+  .comments-list {
+    max-height: 50vh !important;
+  }
+
+  /* La cabecera de cada tarjeta se apila en columna */
+  .comment-card-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  /* Los metadatos y acciones ocupan el 100% */
+  .comment-card-meta,
+  .comment-card-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* El botón "Responder/Editar" ocupa todo el ancho */
+  .comment-card-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Los badges dentro de las tarjetas se reducen */
+  .comment-card .badge {
+    font-size: 10px;
+  }
+}
+
+/* Ajustes para móviles muy pequeños */
+@media (max-width: 480px) {
+
+  /* Los filtros siguen en 2 columnas compactas */
+  .comments-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .comment-category-card {
+    padding: 10px 6px;
+    min-height: 85px;
+  }
+
+  .category-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+
+  .category-label {
+    font-size: 10.5px;
+  }
+
+  .category-count {
+    min-width: 24px;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  .comments-list {
+    max-height: 45vh !important;
+  }
+
+  .comment-card {
+    padding: 10px;
+  }
+}
